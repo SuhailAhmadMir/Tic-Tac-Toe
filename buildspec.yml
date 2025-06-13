@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - echo "Login to DockerHub..."
+      - echo ${DOCKERHUB_TOKEN} | docker login -u ${DOCKERHUB_USER} --password-stdin
+  build:
+    commands:
+      - echo "Building the Docker image..."
+      - docker build -t tic-tac-toe-game:latest .
+  post_build:
+    commands:
+      - echo "Pushing the Docker image to DockerHub..."
+      - docker tag tic-tac-toe-game:latest ${DOCKERHUB_USER}/tic-tac-toe-game:latest
+      - docker push ${DOCKERHUB_USER}/tic-tac-toe-game:latest
