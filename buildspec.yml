@@ -17,7 +17,7 @@ phases:
       - aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_MAIN_URI}
       # - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 767397705569.dkr.ecr.ap-northeast-2.amazonaws.com
       - ECR_IMAGE_URI="${ECR_MAIN_URI}/${ECR_REPO_NAME}:latest"
-      - echo "ECR Image URI: ${ECR_IMAGE_URI}"
+      - echo "ECR Image URI ${ECR_IMAGE_URI}"
   build:
     commands:
       - echo "Building the Docker image..."
