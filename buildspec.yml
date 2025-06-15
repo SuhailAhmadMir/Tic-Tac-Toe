@@ -27,3 +27,13 @@ phases:
       - echo "Pushing the Docker image to DockerHub..."
       - docker tag tic-tac-toe-game:latest ${ECR_IMAGE_URI}
       - docker push ${ECR_IMAGE_URI}
+
+      # Generate image definitions file for ECS deployment
+      - echo "Generating image definitions file..."
+      - printf '[{"name":"tic-tac-toe-game","imageUri":"%s"}]' ${ECR_IMAGE_URI} > imagedefinitions.json
+      - echo "Image definitions file created --> imagedefinitions.json"
+
+artifacts:
+  files:
+    - imagedefinitions.json
+  
