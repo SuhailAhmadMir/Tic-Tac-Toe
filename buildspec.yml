@@ -30,7 +30,7 @@ phases:
 
       # Generate image definitions file for ECS deployment
       - echo "Generating image definitions file..."
-      - printf '[{"name":"tic-tac-toe-game","imageUri":"%s"}]' ${ECR_IMAGE_URI} > imagedefinitions.json
+      - printf '[{"name":"ttt-game","imageUri":"%s"}]' ${ECR_IMAGE_URI} > imagedefinitions.json
       - echo "Image definitions file created --> imagedefinitions.json"
 
 artifacts:
