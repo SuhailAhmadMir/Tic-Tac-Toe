@@ -1,10 +1,9 @@
 version: 0.2
 env:
-  variables:
+  secrets-manager:
+    DOCKERHUB_TOKEN: sam-dockerhub:token
+    DOCKERHUB_USER: sam-dockerhub:user
     ECR_REPO_NAME: tic-tac-toe-game
-  parameter-store:
-    DOCKERHUB_TOKEN: /dockerhub/token 
-    DOCKERHUB_USER: /dockerhub/user  
 phases:
   pre_build:
     commands:
