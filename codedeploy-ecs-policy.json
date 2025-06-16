@@ -1,0 +1,32 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ECSDeploy",
+      "Effect": "Allow",
+      "Action": [
+        "ecs:DescribeClusters",
+        "ecs:DescribeServices",
+        "ecs:DescribeTaskDefinition",
+        "ecs:RegisterTaskDefinition",
+        "ecs:UpdateService"
+      ],
+      "Resource": [
+        "arn:aws:ecs:ap-northeast-2:<acct>:cluster/sam-my-cluster",
+        "arn:aws:ecs:ap-northeast-2:<acct>:service/sam-my-cluster/SAM-TTTgame-task-definition-service-tx2aph3f",
+        "arn:aws:ecs:ap-northeast-2:<acct>:task-definition/*"
+      ]
+    },
+    {
+      "Sid": "CanPassTaskRoles",
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": [
+        "arn:aws:iam::<acct>:role/ecsTaskExecutionRole",
+        "arn:aws:iam::<acct>:role/ecsTaskRole"
+      ]
+    }
+  ]
+}
+// Note: Replace <acct> with your actual AWS account ID.
+// Note: This policy allows the ECS service to describe clusters, services, and task definitions,
